@@ -1,0 +1,207 @@
+@import 'tailwindcss';
+
+/* Self-hosted fonts from public/fonts — stable URLs so index.html can
+   preload the above-the-fold faces (kills the font-swap layout shift).
+   Sources: @fontsource-variable/bricolage-grotesque, @fontsource/ibm-plex-* */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('/fonts/bricolage-grotesque-latin-wght-normal.woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-sans-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-sans-latin-500-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-sans-latin-600-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-mono-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-mono-latin-500-normal.woff2') format('woff2');
+}
+
+@plugin 'daisyui' {
+  themes: false;
+}
+
+/*
+ * Two themes, and they are the MCP widget's own two palettes
+ * (assets/dashboard.html in the runner repo), so the toggle here produces
+ * what a visitor later sees in Claude Desktop. `secondary` is the one
+ * addition: a whisky amber, used only for eyebrow labels and the closing
+ * call to action — never on a button next to primary.
+ *
+ * Three states: no preference follows the OS (default / prefersdark);
+ * an explicit choice sets data-theme on <html> from the inline script in
+ * index.html, before first paint, so prerendered pages never flash.
+ */
+@plugin 'daisyui/theme' {
+  name: 'highball-light';
+  default: true;
+  color-scheme: light;
+
+  --color-base-100: #ffffff;
+  --color-base-200: #f9fafb;
+  --color-base-300: #f3f4f6;
+  --color-base-content: #1a1a2e;
+
+  --color-primary: #4f39fa;
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #a35f14;
+  --color-secondary-content: #ffffff;
+
+  --color-accent: #4f39fa;
+  --color-accent-content: #ffffff;
+
+  /* Terminal and code grounds stay dark in both themes */
+  --color-neutral: #111118;
+  --color-neutral-content: #e5e7eb;
+
+  --color-info: #4f39fa;
+  --color-info-content: #ffffff;
+  --color-success: #15803d;
+  --color-success-content: #ffffff;
+  --color-warning: #b45309;
+  --color-warning-content: #ffffff;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@plugin 'daisyui/theme' {
+  name: 'highball-dark';
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: #111118;
+  --color-base-200: #1a1a24;
+  --color-base-300: #23232e;
+  --color-base-content: #e5e7eb;
+
+  /* Dark text on the lilac: white fails AA here (3.1:1), near-black passes (6.3:1) */
+  --color-primary: #8f85ff;
+  --color-primary-content: #0f0f16;
+
+  --color-secondary: #e0a055;
+  --color-secondary-content: #1a1208;
+
+  --color-accent: #8f85ff;
+  --color-accent-content: #0f0f16;
+
+  --color-neutral: #0b0b11;
+  --color-neutral-content: #e5e7eb;
+
+  --color-info: #8f85ff;
+  --color-info-content: #0f0f16;
+  --color-success: #4ade80;
+  --color-success-content: #052e16;
+  --color-warning: #fbbf24;
+  --color-warning-content: #1c1400;
+  --color-error: #f87171;
+  --color-error-content: #2a0a0a;
+
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@theme {
+  --font-display: 'Bricolage Grotesque', 'Avenir Next', 'Helvetica Neue', sans-serif;
+  --font-sans: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Display headings */
+.heading {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+/* The hairline "border" tokens DaisyUI exposes as base-content mixes read
+   slightly too strong on the dark ground; one line-color for every card. */
+.line {
+  border-color: color-mix(in oklab, var(--color-base-content) 12%, transparent);
+}
+
+/* Theme toggle icons: pure CSS, driven by the resolved theme, so the
+   server-rendered markup never disagrees with the client (no hydration
+   mismatch, and the right icon shows before any script runs). */
+.icon-sun { display: none; }
+.icon-moon { display: inline-block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='highball-light']) .icon-sun { display: inline-block; }
+  :root:not([data-theme='highball-light']) .icon-moon { display: none; }
+}
+:root[data-theme='highball-dark'] .icon-sun { display: inline-block; }
+:root[data-theme='highball-dark'] .icon-moon { display: none; }
+
+/* Clerk-style angled notches on the feature band */
+.notched {
+  clip-path: polygon(0 0, calc(100% - 64px) 0, 100% 64px, 100% 100%, 64px 100%, 0 calc(100% - 64px));
+}
+@media (max-width: 720px) {
+  .notched {
+    clip-path: polygon(0 0, calc(100% - 36px) 0, 100% 36px, 100% 100%, 36px 100%, 0 calc(100% - 36px));
+  }
+}
+
+/* Code panels: the runtime-safe way to keep blank lines is real newlines
+   in a <pre>; syntax colors are the semantic tokens so both themes work. */
+.term pre {
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+}

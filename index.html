@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Apply a saved theme choice before first paint. Pages are prerendered
+         static HTML, so doing this in React would flash the default theme on
+         every load for anyone who chose the other one. -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t === 'dark' || t === 'light') {
+            document.documentElement.setAttribute('data-theme', 'highball-' + t);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Preload above-the-fold fonts: this is what keeps CLS at 0 -->
+    <link rel="preload" href="/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/ibm-plex-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <title>Highball — Local CI for AI Coding Agents</title>
+    <meta name="description" content="Highball runs your repo's own checks after every agent edit and the full checks at turn end. A failure blocks the agent and hands it the output. One YAML file, no account, no server." />
+    <link rel="canonical" href="https://highball.profoundry.us/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Highball" />
+    <meta property="og:title" content="Highball — Local CI for AI Coding Agents" />
+    <meta property="og:description" content="Highball runs your repo's own checks after every agent edit and the full checks at turn end. A failure blocks the agent and hands it the output. One YAML file, no account, no server." />
+    <meta property="og:url" content="https://highball.profoundry.us/" />
+    <meta property="og:image" content="https://highball.profoundry.us/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Highball",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "macOS, Linux, Windows",
+        "url": "https://highball.profoundry.us",
+        "downloadUrl": "https://www.npmjs.com/package/@profoundry-us/highball",
+        "license": "https://opensource.org/license/mit",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@type": "Organization", "name": "Profoundry", "url": "https://profoundry.us" }
+      }
+    </script>
+  </head>
+  <body class="bg-base-100 text-base-content">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
