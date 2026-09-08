@@ -7,7 +7,7 @@ function RunRow({ status, when, kind, branch, time, tally }) {
   return (
     <div className="flex flex-wrap items-center gap-3 px-3 py-2.5 rounded-field border line bg-base-200 font-mono text-[13px]">
       <span className={`badge badge-soft ${chip} font-mono text-xs`}>{glyph} {status}</span>
-      <span className="text-base-content/50">{when}</span>
+      <span className="text-base-content/70">{when}</span>
       <span className="text-base-content/70">{kind}</span>
       <span>{branch}</span>
       <span className="flex-1" />
@@ -53,7 +53,7 @@ export default function Pairs() {
           <div className="rounded-box border line bg-base-200 p-4 flex flex-col gap-2.5">
             <div className="flex items-center gap-2.5">
               <span className="badge badge-soft badge-error font-mono text-xs">Stop hook blocked</span>
-              <span className="font-mono text-xs text-base-content/50">exit 2 · 14.2s</span>
+              <span className="font-mono text-xs text-base-content/70">exit 2 · 14.2s</span>
             </div>
             <p className="font-mono text-[13px] leading-relaxed text-base-content/80">
               lib/ types hold (lib-types) failed. Fix before finishing: lib/locations.js(248,3): error TS2339: Property
