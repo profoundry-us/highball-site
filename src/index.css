@@ -2,13 +2,14 @@
 
 /* Self-hosted fonts from public/fonts — stable URLs so index.html can
    preload the above-the-fold faces (kills the font-swap layout shift).
-   Sources: @fontsource-variable/bricolage-grotesque, @fontsource/ibm-plex-* */
+   Sources: @fontsource-variable/archivo, @fontsource/ibm-plex-* */
 @font-face {
-  font-family: 'Bricolage Grotesque';
+  font-family: 'Archivo';
   font-style: normal;
-  font-weight: 200 800;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
   font-display: swap;
-  src: url('/fonts/bricolage-grotesque-latin-wght-normal.woff2') format('woff2-variations');
+  src: url('/fonts/archivo-latin-wdth-normal.woff2') format('woff2-variations');
 }
 @font-face {
   font-family: 'IBM Plex Sans';
@@ -146,7 +147,7 @@
 }
 
 @theme {
-  --font-display: 'Bricolage Grotesque', 'Avenir Next', 'Helvetica Neue', sans-serif;
+  --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   --font-sans: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
 }
@@ -160,9 +161,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Display headings */
+/* Display headings: Archivo on its semi-condensed width — presence at 66px
+   without shouting, and eight short tile titles that don't sprawl. */
 .heading {
   font-family: var(--font-display);
+  font-stretch: 87.5%;
   letter-spacing: -0.02em;
   line-height: 1.05;
   text-wrap: balance;
