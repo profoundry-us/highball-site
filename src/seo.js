@@ -4,8 +4,8 @@
  * (build-time static HTML generation).
  */
 
-// TODO: confirm the production hostname before the first deploy — this
-// feeds every canonical URL, og:url, the sitemap and robots.txt.
+// Production origin, no trailing slash. Feeds every canonical URL and og:url;
+// public/robots.txt, public/sitemap.xml and nginx.conf carry it by hand.
 export const SITE_URL = 'https://highball.profoundry.us';
 
 export const ROUTE_META = {
