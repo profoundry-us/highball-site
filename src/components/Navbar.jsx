@@ -22,9 +22,12 @@ export function Mark({ className = 'size-6' }) {
     >
       <path d="M6 3h12l-1.2 17.2A1 1 0 0 1 15.8 21H8.2a1 1 0 0 1-1-.8L6 3z" />
       {/* the liquid: one S-wave across the glass, well above the ice */}
-      <path d="M6.5 8.8c1.8-1.7 3.7-1.7 5.5 0s3.7 1.7 5.5 0" />
-      <rect x="9.1" y="13.5" width="3" height="3" rx="0.6" />
-      <rect x="12.9" y="15.5" width="2.6" height="2.6" rx="0.6" />
+      <path d="M6.6 9.6c1.8-1.7 3.7-1.7 5.5 0s3.7 1.7 5.4 0" />
+      {/* ice: thinner stroke so the squares read as squares, tilted so they float */}
+      <g strokeWidth="1.25">
+        <rect x="9" y="13.4" width="3.3" height="3.3" rx="0.5" transform="rotate(-14 10.65 15.05)" />
+        <rect x="12.9" y="15.3" width="2.9" height="2.9" rx="0.5" transform="rotate(17 14.35 16.75)" />
+      </g>
     </svg>
   );
 }
