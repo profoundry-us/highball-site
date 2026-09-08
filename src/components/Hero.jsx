@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Navbar, { ONBOARDING } from './Navbar.jsx';
+import Navbar, { ONBOARDING, EXT } from './Navbar.jsx';
 import Term, { Window, Ok, Bad, Todo, Dim } from './Term.jsx';
 
 const INSTALL = 'npm i -D @profoundry-us/highball';
@@ -67,7 +67,7 @@ export default function Hero() {
             </p>
             <div className="flex flex-wrap items-center gap-3 mt-1">
               <InstallBox />
-              <a href={ONBOARDING} className="btn btn-primary">Read the onboarding guide</a>
+              <a href={ONBOARDING} {...EXT} className="btn btn-primary">Read the onboarding guide</a>
             </div>
           </div>
 

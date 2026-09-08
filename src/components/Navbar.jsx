@@ -5,6 +5,9 @@ export const GITHUB = 'https://github.com/profoundry-us/highball';
 export const NPM = 'https://www.npmjs.com/package/@profoundry-us/highball';
 export const ONBOARDING = 'https://github.com/profoundry-us/highball/blob/main/ONBOARDING.md';
 
+// Every off-site link opens in a new tab; the homepage stays put.
+export const EXT = { target: '_blank', rel: 'noopener noreferrer' };
+
 export function Mark({ className = 'size-6' }) {
   return (
     <svg
@@ -35,13 +38,13 @@ export default function Navbar() {
         </Link>
         <div className="hidden md:flex items-center gap-7 text-sm font-medium text-base-content/70">
           <a href="#runs" className="hover:text-base-content">How it works</a>
-          <a href={ONBOARDING} className="hover:text-base-content">Onboarding</a>
-          <a href={GITHUB} className="hover:text-base-content">GitHub</a>
-          <a href={NPM} className="hover:text-base-content">npm</a>
+          <a href={ONBOARDING} {...EXT} className="hover:text-base-content">Onboarding</a>
+          <a href={GITHUB} {...EXT} className="hover:text-base-content">GitHub</a>
+          <a href={NPM} {...EXT} className="hover:text-base-content">npm</a>
         </div>
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <a href={ONBOARDING} className="btn btn-sm btn-outline border-base-content/20">Get started</a>
+          <a href={ONBOARDING} {...EXT} className="btn btn-sm btn-outline border-base-content/20">Get started</a>
         </div>
       </nav>
     </header>
