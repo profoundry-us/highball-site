@@ -21,9 +21,10 @@ export function Mark({ className = 'size-6' }) {
       aria-hidden="true"
     >
       <path d="M6 3h12l-1.2 17.2A1 1 0 0 1 15.8 21H8.2a1 1 0 0 1-1-.8L6 3z" />
-      <path d="M6.8 10.5h10.4" />
-      <rect x="9" y="12.5" width="3" height="3" rx="0.6" />
-      <rect x="12.8" y="14.5" width="2.6" height="2.6" rx="0.6" />
+      {/* the liquid: one S-wave across the glass, well above the ice */}
+      <path d="M6.5 8.8c1.8-1.7 3.7-1.7 5.5 0s3.7 1.7 5.5 0" />
+      <rect x="9.1" y="13.5" width="3" height="3" rx="0.6" />
+      <rect x="12.9" y="15.5" width="2.6" height="2.6" rx="0.6" />
     </svg>
   );
 }
