@@ -58,7 +58,7 @@ export default function RunGallery() {
         />
       </div>
 
-      <NeonRule tone="secondary" inline className="mt-6" />
+      <NeonRule tone="secondary" inline className="mt-6 mb-6" />
 
       <div className="grid md:grid-cols-12 gap-10 items-start">
         <div className="md:col-span-5 flex flex-col gap-4">
