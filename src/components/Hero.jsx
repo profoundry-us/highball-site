@@ -56,8 +56,8 @@ export default function Hero() {
         <Navbar />
         <div className="mx-auto max-w-[1180px] px-5 md:px-8 pt-16 md:pt-24">
           {/* Two columns from lg: the words on the left, the prompt and its buttons on the right,
-              bottom-aligned so the input line sits level with the paragraph. */}
-          <div className="flex flex-col gap-8 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,520px)] lg:gap-12 lg:items-end">
+              vertically centred against the text block. */}
+          <div className="flex flex-col gap-8 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,520px)] lg:gap-12 lg:items-center">
             <div className="max-w-[760px] flex flex-col gap-5">
               <span className="font-mono text-xs tracking-[0.14em] uppercase text-secondary">
                 Custom Turn-Based Checks + Telemetry
