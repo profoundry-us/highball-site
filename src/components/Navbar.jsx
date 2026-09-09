@@ -48,7 +48,7 @@ export default function Navbar() {
         </div>
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <a href={ONBOARDING} {...EXT} className="btn btn-sm btn-outline border-base-content/20">Get started</a>
+          <a href="/#get-started" className="btn btn-sm btn-primary">Get started</a>
         </div>
       </nav>
     </header>

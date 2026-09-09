@@ -92,7 +92,10 @@ export default function Hero() {
             </p>
             <div className="flex flex-wrap items-center gap-3 mt-1">
               <InstallBox />
-              <a href={ONBOARDING} {...EXT} className="btn btn-primary">Read the onboarding guide</a>
+              <div className="flex flex-wrap items-center gap-3">
+                <a href="#get-started" className="btn btn-primary">Get started</a>
+                <a href={ONBOARDING} {...EXT} className="btn btn-outline">Read the onboarding guide</a>
+              </div>
             </div>
           </div>
 
