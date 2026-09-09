@@ -2,13 +2,19 @@ import { useState } from 'react';
 import Navbar, { ONBOARDING, EXT } from './Navbar.jsx';
 import Term, { Window, Ok, Bad, Todo, Dim } from './Term.jsx';
 
-const INSTALL = 'npm i -D @profoundry-us/highball';
+// yarn first: yarn 1 treats a repo's own `engines` field as a hard error, so
+// people who hit that wall are the ones who most need to see their command.
+const INSTALLS = [
+  { id: 'yarn', label: 'yarn', cmd: 'yarn add -D @profoundry-us/highball' },
+  { id: 'npm', label: 'npm', cmd: 'npm i -D @profoundry-us/highball' },
+];
 
 function InstallBox() {
+  const [pm, setPm] = useState(INSTALLS[0]);
   const [copied, setCopied] = useState(false);
   async function copy() {
     try {
-      await navigator.clipboard.writeText(INSTALL);
+      await navigator.clipboard.writeText(pm.cmd);
       setCopied(true);
       setTimeout(() => setCopied(false), 1600);
     } catch {
@@ -16,16 +22,35 @@ function InstallBox() {
     }
   }
   return (
-    <button
-      type="button"
-      onClick={copy}
-      className="inline-flex items-center gap-3 h-11 px-4 rounded-field border line bg-neutral/80 font-mono text-sm text-neutral-content"
-      aria-label="Copy the install command"
-    >
-      <span className="text-neutral-content/45">$</span>
-      <span>{INSTALL}</span>
-      <span className="text-neutral-content/60 text-xs w-12 text-right">{copied ? 'copied' : 'copy'}</span>
-    </button>
+    <div className="w-full sm:w-auto rounded-field border line bg-neutral/80 text-neutral-content overflow-hidden">
+      <div role="tablist" aria-label="Package manager" className="tabs tabs-border tabs-sm px-2 border-b line">
+        {INSTALLS.map((i) => (
+          <button
+            key={i.id}
+            type="button"
+            role="tab"
+            aria-selected={pm.id === i.id}
+            onClick={() => {
+              setPm(i);
+              setCopied(false);
+            }}
+            className={`tab font-mono text-xs ${pm.id === i.id ? 'tab-active' : 'text-neutral-content/60'}`}
+          >
+            {i.label}
+          </button>
+        ))}
+      </div>
+      <button
+        type="button"
+        onClick={copy}
+        className="flex w-full items-center gap-3 h-11 px-4 text-left font-mono text-sm"
+        aria-label={`Copy the ${pm.label} install command`}
+      >
+        <span className="text-neutral-content/45">$</span>
+        <span className="flex-1 whitespace-nowrap">{pm.cmd}</span>
+        <span className="text-neutral-content/60 text-xs w-12 text-right">{copied ? 'copied' : 'copy'}</span>
+      </button>
+    </div>
   );
 }
 
