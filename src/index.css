@@ -230,9 +230,13 @@ body {
    with two blurred copies behind it for the glow — tight and bright, then
    wide and faint. */
 .neon-rule {
+  --neon: var(--color-primary);
   position: relative;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-primary) 25%, var(--color-primary) 75%, transparent);
+  background: linear-gradient(90deg, transparent, var(--neon) 25%, var(--neon) 75%, transparent);
+}
+.neon-rule-secondary {
+  --neon: var(--color-secondary);
 }
 .neon-rule::before,
 .neon-rule::after {

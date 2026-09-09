@@ -1,4 +1,5 @@
 import Term, { Window, Bad } from './Term.jsx';
+import NeonRule from './NeonRule.jsx';
 import Section from './Section.jsx';
 
 function Shot({ kind, stat, title, src, width, height, alt, note }) {
@@ -57,7 +58,9 @@ export default function RunGallery() {
         />
       </div>
 
-      <div className="grid md:grid-cols-12 gap-10 items-start mt-4 pt-10 border-t line">
+      <NeonRule tone="secondary" inline className="mt-6" />
+
+      <div className="grid md:grid-cols-12 gap-10 items-start">
         <div className="md:col-span-5 flex flex-col gap-4">
           <div className="flex items-center gap-2.5">
             <span className="badge badge-soft badge-error font-mono text-xs">✗ failed</span>
