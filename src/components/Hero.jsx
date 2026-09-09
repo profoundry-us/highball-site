@@ -13,6 +13,10 @@ export const PROMPT = 'Run npx @profoundry-us/highball onboard and follow the in
 function PromptLine() {
   return (
     <div id="get-started" className="w-full max-w-[560px] scroll-mt-24 flex flex-col gap-2">
+      <div className="flex items-center justify-between px-1 font-mono text-[11px] text-neutral-content/60">
+        <span>claude code · cursor · codex</span>
+        <CopyButton text={PROMPT} label="Copy the prompt for your agent" />
+      </div>
       <div
         className="flex items-baseline gap-3 px-4 py-3.5 rounded-field border line bg-neutral font-mono text-sm leading-relaxed shadow-[0_30px_80px_-20px_rgba(0,0,0,.8)]"
       >
@@ -21,10 +25,6 @@ function PromptLine() {
           {PROMPT}
           <span className="caret" aria-hidden="true" />
         </p>
-      </div>
-      <div className="flex items-center justify-between px-1 font-mono text-[11px] text-neutral-content/60">
-        <span>claude code · cursor · codex</span>
-        <CopyButton text={PROMPT} label="Copy the prompt for your agent" />
       </div>
     </div>
   );
@@ -73,8 +73,8 @@ export default function Hero() {
             <div className="flex flex-col gap-4 lg:items-end">
               <PromptLine />
               <div className="flex flex-wrap items-center gap-3">
-                <a href={ONBOARDING} {...EXT} className="btn btn-outline">Read the onboarding guide</a>
                 <a href="#by-hand" className="btn btn-ghost">Set it up yourself</a>
+                <a href={ONBOARDING} {...EXT} className="btn btn-outline">Read the onboarding guide</a>
               </div>
             </div>
           </div>
