@@ -43,7 +43,7 @@ function InstallTabs() {
  */
 export default function ByHand() {
   return (
-    <section id="by-hand" className="pt-4 pb-6 scroll-mt-8">
+    <section id="by-hand" className="pt-16 pb-6 scroll-mt-8">
       <div className="mx-auto max-w-[1180px] px-5 md:px-8 grid md:grid-cols-2 gap-10 items-center">
         <div className="flex flex-col gap-4 min-w-0">
           <span className="font-mono text-xs tracking-[0.14em] uppercase text-secondary">The manual way</span>

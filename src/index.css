@@ -225,3 +225,40 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .caret { animation: none; }
 }
+
+/* Neon divider: a one-pixel gradient hairline (primary fading through the whisky
+   secondary and out to nothing at both ends) with two blurred copies behind it
+   for the glow — tight and bright, then wide and faint. */
+.neon-rule {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-primary) 30%,
+    var(--color-secondary) 50%,
+    var(--color-primary) 70%,
+    transparent
+  );
+}
+.neon-rule::before,
+.neon-rule::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: inherit;
+  pointer-events: none;
+}
+.neon-rule::before {
+  top: -3px;
+  bottom: -3px;
+  filter: blur(6px);
+  opacity: 0.8;
+}
+.neon-rule::after {
+  top: -14px;
+  bottom: -14px;
+  filter: blur(22px);
+  opacity: 0.35;
+}

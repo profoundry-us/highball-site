@@ -5,6 +5,7 @@ import RunGallery from '../components/RunGallery.jsx';
 import Tiles from '../components/Tiles.jsx';
 import Pairs from '../components/Pairs.jsx';
 import WithAgent from '../components/WithAgent.jsx';
+import NeonRule from '../components/NeonRule.jsx';
 import ByHand from '../components/ByHand.jsx';
 import Footer from '../components/Footer.jsx';
 
@@ -17,6 +18,7 @@ export default function Home() {
       <Tiles />
       <Pairs />
       <WithAgent />
+      <NeonRule />
       <ByHand />
       <Footer />
     </main>
