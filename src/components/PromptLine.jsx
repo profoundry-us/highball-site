@@ -21,17 +21,27 @@ export default function PromptLine({ id, elevated = false, className = '' }) {
           className="text-base-content/60 hover:text-base-content"
         />
       </div>
+      {/* In the hero the row wears DaisyUI's aura: a thin conic sweep of primary
+          circling the border with a soft glow behind it (slows under reduced motion). */}
       <div
-        data-theme="highball-dark"
-        className={`flex items-baseline gap-3 px-4 py-3.5 rounded-field border line bg-neutral font-mono text-sm leading-relaxed ${
-          elevated ? 'shadow-[0_30px_80px_-20px_rgba(0,0,0,.8)]' : 'shadow-[0_16px_40px_-20px_rgba(0,0,0,.5)]'
-        }`}
+        className={
+          elevated
+            ? 'aura aura-sm block w-full text-primary duration-[9s] [--aura-radius:var(--radius-field)]'
+            : undefined
+        }
       >
-        <span className="text-primary select-none" aria-hidden="true">&gt;</span>
-        <p className="m-0 text-neutral-content">
-          {PROMPT}
-          <span className="caret" aria-hidden="true" />
-        </p>
+        <div
+          data-theme="highball-dark"
+          className={`flex items-baseline gap-3 px-4 py-3.5 rounded-field border line bg-neutral font-mono text-sm leading-relaxed ${
+            elevated ? 'shadow-[0_30px_80px_-20px_rgba(0,0,0,.8)]' : 'shadow-[0_16px_40px_-20px_rgba(0,0,0,.5)]'
+          }`}
+        >
+          <span className="text-primary select-none" aria-hidden="true">&gt;</span>
+          <p className="m-0 text-neutral-content">
+            {PROMPT}
+            <span className="caret" aria-hidden="true" />
+          </p>
+        </div>
       </div>
     </div>
   );
