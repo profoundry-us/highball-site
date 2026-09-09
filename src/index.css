@@ -208,3 +208,20 @@ body {
   font-size: 0.8125rem;
   line-height: 1.55;
 }
+
+/* The agent input line's caret: a steady blink, none at all for anyone who asked for less motion. */
+.caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  margin-left: 0.15em;
+  vertical-align: text-bottom;
+  background: currentColor;
+  animation: caret-blink 1.1s steps(1, end) infinite;
+}
+@keyframes caret-blink {
+  50% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .caret { animation: none; }
+}

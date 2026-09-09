@@ -1,25 +1,31 @@
 import Navbar, { ONBOARDING, EXT } from './Navbar.jsx';
-import Term, { Window, Ok, Bad, Todo, Dim, Acc } from './Term.jsx';
+import Term, { Window, Ok, Bad, Todo, Dim } from './Term.jsx';
 import CopyButton from './CopyButton.jsx';
 
-export const ONBOARD_CMD = 'npx @profoundry-us/highball onboard';
+export const PROMPT = 'Run npx @profoundry-us/highball onboard and follow the instructions.';
 
 /*
- * The first thing on the page: the one command to hand your agent. It is
- * also the #get-started target, so every "Get started" lands here.
+ * The first thing on the page: the prompt to hand your agent, drawn as the
+ * input line of a coding agent (chevron, live caret) rather than a terminal
+ * window. It is also the #get-started target, so every "Get started" lands
+ * here. Copy takes the whole sentence — it is a prompt, not a command.
  */
-function OnboardBox() {
+function PromptLine() {
   return (
-    <div id="get-started" className="w-full max-w-[560px] scroll-mt-24">
-      <Term
-        bar="tell your agent"
-        right={<CopyButton text={ONBOARD_CMD} label="Copy the onboard command" />}
-        className="shadow-[0_30px_80px_-20px_rgba(0,0,0,.8)]"
-        lines={[
-          <><Dim>›</Dim> Run <Acc>{ONBOARD_CMD}</Acc></>,
-          '  and follow the instructions.',
-        ]}
-      />
+    <div id="get-started" className="w-full max-w-[560px] scroll-mt-24 flex flex-col gap-2">
+      <div
+        className="flex items-baseline gap-3 px-4 py-3.5 rounded-field border line bg-neutral font-mono text-sm leading-relaxed shadow-[0_30px_80px_-20px_rgba(0,0,0,.8)]"
+      >
+        <span className="text-primary select-none" aria-hidden="true">&gt;</span>
+        <p className="m-0 text-neutral-content">
+          {PROMPT}
+          <span className="caret" aria-hidden="true" />
+        </p>
+      </div>
+      <div className="flex items-center justify-between px-1 font-mono text-[11px] text-neutral-content/60">
+        <span>claude code · cursor · codex</span>
+        <CopyButton text={PROMPT} label="Copy the prompt for your agent" />
+      </div>
     </div>
   );
 }
@@ -61,7 +67,7 @@ export default function Hero() {
               A failure blocks the agent and hands it the output. One YAML file. No account, no server.
             </p>
             <div className="flex flex-col gap-4 mt-1">
-              <OnboardBox />
+              <PromptLine />
               <div className="flex flex-wrap items-center gap-3">
                 <a href={ONBOARDING} {...EXT} className="btn btn-outline">Read the onboarding guide</a>
                 <a href="#by-hand" className="btn btn-ghost">Set it up yourself</a>
