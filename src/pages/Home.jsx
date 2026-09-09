@@ -4,9 +4,7 @@ import Hero from '../components/Hero.jsx';
 import RunGallery from '../components/RunGallery.jsx';
 import Tiles from '../components/Tiles.jsx';
 import Pairs from '../components/Pairs.jsx';
-import WithAgent from '../components/WithAgent.jsx';
-import NeonRule from '../components/NeonRule.jsx';
-import ByHand from '../components/ByHand.jsx';
+import GettingStarted from '../components/GettingStarted.jsx';
 import Footer from '../components/Footer.jsx';
 
 export default function Home() {
@@ -17,9 +15,7 @@ export default function Home() {
       <RunGallery />
       <Tiles />
       <Pairs />
-      <WithAgent />
-      <NeonRule />
-      <ByHand />
+      <GettingStarted />
       <Footer />
     </main>
   );

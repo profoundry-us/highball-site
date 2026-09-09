@@ -8,11 +8,11 @@ import { ONBOARDING, EXT } from './Navbar.jsx';
  */
 export default function WithAgent() {
   return (
-    <section id="with-agent" className="border-t line pt-24 pb-16 scroll-mt-8">
+    <section id="with-agent" className="pt-16 pb-16 scroll-mt-8">
       <div className="mx-auto max-w-[1180px] px-5 md:px-8 grid md:grid-cols-2 gap-10 items-center">
         <div className="flex flex-col gap-4 md:justify-self-end">
           <span className="font-mono text-xs tracking-[0.14em] uppercase text-secondary">The suggested way</span>
-          <h2 className="heading text-3xl md:text-4xl font-bold">Hand it to your agent</h2>
+          <h3 className="heading text-3xl md:text-4xl font-bold">Hand it to your agent</h3>
           <p className="text-base-content/70 max-w-[48ch]">
             One prompt, pasted into whatever agent already works in your repo. It installs the package, reads the{' '}
             <a href={ONBOARDING} {...EXT} className="link text-base-content">

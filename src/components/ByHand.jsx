@@ -47,7 +47,7 @@ export default function ByHand() {
       <div className="mx-auto max-w-[1180px] px-5 md:px-8 grid md:grid-cols-2 gap-10 items-center">
         <div className="flex flex-col gap-4 min-w-0">
           <span className="font-mono text-xs tracking-[0.14em] uppercase text-secondary">The manual way</span>
-          <h2 className="heading text-3xl md:text-4xl font-bold">Set it up manually</h2>
+          <h3 className="heading text-3xl md:text-4xl font-bold">Set it up manually</h3>
           <p className="text-base-content/70 max-w-[48ch]">
             Same runner, same hooks, every step yours. Install the package, scaffold the config, and write the
             checks from what your repo already runs in CI. The{' '}

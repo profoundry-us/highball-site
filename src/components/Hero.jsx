@@ -43,7 +43,7 @@ export default function Hero() {
               </p>
             </div>
             <div className="flex flex-col gap-4 lg:items-end">
-              <PromptLine id="get-started" elevated />
+              <PromptLine elevated />
               <div className="flex flex-wrap items-center gap-3">
                 <a href="#by-hand" className="btn btn-ghost">Set it up manually</a>
                 <a href={ONBOARDING} {...EXT} className="btn btn-outline">Read the onboarding guide</a>
