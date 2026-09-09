@@ -1,55 +1,25 @@
-import { useState } from 'react';
 import Navbar, { ONBOARDING, EXT } from './Navbar.jsx';
-import Term, { Window, Ok, Bad, Todo, Dim } from './Term.jsx';
+import Term, { Window, Ok, Bad, Todo, Dim, Acc } from './Term.jsx';
+import CopyButton from './CopyButton.jsx';
 
-// yarn first: yarn 1 treats a repo's own `engines` field as a hard error, so
-// people who hit that wall are the ones who most need to see their command.
-const INSTALLS = [
-  { id: 'yarn', label: 'yarn', cmd: 'yarn add -D @profoundry-us/highball' },
-  { id: 'npm', label: 'npm', cmd: 'npm i -D @profoundry-us/highball' },
-];
+export const ONBOARD_CMD = 'npx @profoundry-us/highball onboard';
 
-function InstallBox() {
-  const [pm, setPm] = useState(INSTALLS[0]);
-  const [copied, setCopied] = useState(false);
-  async function copy() {
-    try {
-      await navigator.clipboard.writeText(pm.cmd);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1600);
-    } catch {
-      /* clipboard blocked: the text is still selectable */
-    }
-  }
+/*
+ * The first thing on the page: the one command to hand your agent. It is
+ * also the #get-started target, so every "Get started" lands here.
+ */
+function OnboardBox() {
   return (
-    <div className="w-full sm:w-auto rounded-field border line bg-neutral/80 text-neutral-content overflow-hidden">
-      <div role="tablist" aria-label="Package manager" className="tabs tabs-border tabs-sm px-2 border-b line">
-        {INSTALLS.map((i) => (
-          <button
-            key={i.id}
-            type="button"
-            role="tab"
-            aria-selected={pm.id === i.id}
-            onClick={() => {
-              setPm(i);
-              setCopied(false);
-            }}
-            className={`tab font-mono text-xs ${pm.id === i.id ? 'tab-active' : 'text-neutral-content/60'}`}
-          >
-            {i.label}
-          </button>
-        ))}
-      </div>
-      <button
-        type="button"
-        onClick={copy}
-        className="flex w-full items-center gap-3 h-11 px-4 text-left font-mono text-sm"
-        aria-label={`Copy the ${pm.label} install command`}
-      >
-        <span className="text-neutral-content/45">$</span>
-        <span className="flex-1 whitespace-nowrap">{pm.cmd}</span>
-        <span className="text-neutral-content/60 text-xs w-12 text-right">{copied ? 'copied' : 'copy'}</span>
-      </button>
+    <div id="get-started" className="w-full max-w-[560px] scroll-mt-24">
+      <Term
+        bar="tell your agent"
+        right={<CopyButton text={ONBOARD_CMD} label="Copy the onboard command" />}
+        className="shadow-[0_30px_80px_-20px_rgba(0,0,0,.8)]"
+        lines={[
+          <><Dim>›</Dim> Run <Acc>{ONBOARD_CMD}</Acc></>,
+          '  and follow the instructions.',
+        ]}
+      />
     </div>
   );
 }
@@ -90,11 +60,11 @@ export default function Hero() {
               Highball runs your repo's own checks after every agent edit, and the full checks when the turn ends.
               A failure blocks the agent and hands it the output. One YAML file. No account, no server.
             </p>
-            <div className="flex flex-wrap items-center gap-3 mt-1">
-              <InstallBox />
+            <div className="flex flex-col gap-4 mt-1">
+              <OnboardBox />
               <div className="flex flex-wrap items-center gap-3">
-                <a href="#get-started" className="btn btn-primary">Get started</a>
                 <a href={ONBOARDING} {...EXT} className="btn btn-outline">Read the onboarding guide</a>
+                <a href="#by-hand" className="btn btn-ghost">Set it up yourself</a>
               </div>
             </div>
           </div>
