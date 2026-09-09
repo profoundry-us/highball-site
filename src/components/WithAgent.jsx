@@ -15,7 +15,7 @@ export default function WithAgent() {
           <h2 className="heading text-3xl md:text-4xl font-bold">Hand it to your agent</h2>
           <p className="text-base-content/70 max-w-[48ch]">
             One prompt, pasted into whatever agent already works in your repo. It installs the package, reads the{' '}
-            <a href={ONBOARDING} {...EXT} className="link link-hover text-base-content">
+            <a href={ONBOARDING} {...EXT} className="link text-base-content">
               onboarding guide
             </a>
             , surveys your toolchain, writes checks from what CI already trusts, and proves that a failure

@@ -13,12 +13,12 @@ export const PROMPT = 'Run npx @profoundry-us/highball onboard and follow the in
 export default function PromptLine({ id, elevated = false, className = '' }) {
   return (
     <div id={id} className={`w-full max-w-[560px] scroll-mt-24 flex flex-col gap-2 ${className}`}>
-      <div className="flex items-center justify-between px-1 font-mono text-[11px] text-base-content/60">
+      <div className="flex items-center justify-between px-1 font-mono text-[11px] text-base-content/70">
         <span>claude code · cursor · codex</span>
         <CopyButton
           text={PROMPT}
           label="Copy the prompt for your agent"
-          className="text-base-content/60 hover:text-base-content"
+          className="text-base-content/70 hover:text-base-content"
         />
       </div>
       {/* In the hero the row wears DaisyUI's aura: a thin conic sweep of primary

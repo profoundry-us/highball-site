@@ -51,7 +51,7 @@ export default function ByHand() {
           <p className="text-base-content/70 max-w-[48ch]">
             Same runner, same hooks, every step yours. Install the package, scaffold the config, and write the
             checks from what your repo already runs in CI. The{' '}
-            <a href={ONBOARDING} {...EXT} className="link link-hover text-base-content">
+            <a href={ONBOARDING} {...EXT} className="link text-base-content">
               onboarding guide
             </a>{' '}
             doubles as a checklist for that survey.
