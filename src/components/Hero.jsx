@@ -55,18 +55,22 @@ export default function Hero() {
       <div className="relative z-10">
         <Navbar />
         <div className="mx-auto max-w-[1180px] px-5 md:px-8 pt-16 md:pt-24">
-          <div className="max-w-[760px] flex flex-col gap-5">
-            <span className="font-mono text-xs tracking-[0.14em] uppercase text-secondary">
-              Custom Turn-Based Checks + Telemetry
-            </span>
-            <h1 className="heading text-[42px] md:text-[66px] font-bold text-white">
-              Local CI for AI Coding Agents
-            </h1>
-            <p className="text-lg md:text-[19px] leading-relaxed text-base-content/85 max-w-[58ch]">
-              Highball runs your repo's own checks after every agent edit, and the full checks when the turn ends.
-              A failure blocks the agent and hands it the output. One YAML file. No account, no server.
-            </p>
-            <div className="flex flex-col gap-4 mt-1">
+          {/* Two columns from lg: the words on the left, the prompt and its buttons on the right,
+              bottom-aligned so the input line sits level with the paragraph. */}
+          <div className="flex flex-col gap-8 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,520px)] lg:gap-12 lg:items-end">
+            <div className="max-w-[760px] flex flex-col gap-5">
+              <span className="font-mono text-xs tracking-[0.14em] uppercase text-secondary">
+                Custom Turn-Based Checks + Telemetry
+              </span>
+              <h1 className="heading text-[42px] md:text-[66px] font-bold text-white">
+                Local CI for AI Coding Agents
+              </h1>
+              <p className="text-lg md:text-[19px] leading-relaxed text-base-content/85 max-w-[58ch]">
+                Highball runs your repo's own checks after every agent edit, and the full checks when the turn ends.
+                A failure blocks the agent and hands it the output. One YAML file. No account, no server.
+              </p>
+            </div>
+            <div className="flex flex-col gap-4 lg:items-end">
               <PromptLine />
               <div className="flex flex-wrap items-center gap-3">
                 <a href={ONBOARDING} {...EXT} className="btn btn-outline">Read the onboarding guide</a>
