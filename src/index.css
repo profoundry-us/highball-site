@@ -307,9 +307,9 @@ html {
  * anyone who asked for less motion, get the resting state):
  *  - .reveal-parallax drifts upward a little faster than the page (the hero's
  *    blocking terminal);
- *  - .reveal-up fades and rises as it enters the viewport (feature tiles);
- *  - the neon rules stretch from a third of their width to full as they come
- *    into view.
+ *  - .reveal-up fades and rises once half of it is in view (feature tiles);
+ *  - the neon rules stretch from a third of their width to full between a
+ *    quarter and half of the way up the viewport.
  */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
@@ -322,13 +322,15 @@ html {
     .reveal-up {
       animation: rise-in ease-out both;
       animation-timeline: view();
-      animation-range: entry 0% entry 60%;
+      /* starts once half the tile is in view, so the rise is actually seen */
+      animation-range: entry 50% cover 40%;
     }
     .neon-rule {
       transform-origin: center;
       animation: widen ease-out both;
       animation-timeline: view();
-      animation-range: cover 0% cover 28%;
+      /* a quarter of the way up the viewport to halfway, not from the bottom edge */
+      animation-range: cover 25% cover 50%;
     }
   }
 }
