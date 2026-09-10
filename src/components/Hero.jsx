@@ -49,11 +49,12 @@ export default function Hero() {
               <div className="flex flex-col gap-4 lg:items-end">
                 <PromptLine elevated />
                 {/* Caption for the prompt block: same width as the box, left-aligned under it. */}
-                <p className="w-full max-w-[560px] text-sm leading-relaxed text-base-content/90">
-                  The prompt points your agent at a step-by-step guide written for it.{' '}
+                <p className="w-full max-w-[560px] -mt-2 text-base leading-relaxed text-base-content/90">
+                  The prompt points your agent at a{' '}
                   <a href={ONBOARDING} {...EXT} className="link font-medium text-white">
-                    Read the agent onboarding guide
-                  </a>
+                    step-by-step guide
+                  </a>{' '}
+                  written for it.
                 </p>
                 <div className="flex flex-wrap items-center gap-3">
                   <a href="/#by-hand" className="btn btn-outline">Set it up manually</a>

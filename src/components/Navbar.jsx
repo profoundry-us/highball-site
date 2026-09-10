@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { FaGithub } from 'react-icons/fa6';
-import { SiNpm } from 'react-icons/si';
 import ThemeToggle from './ThemeToggle.jsx';
 
 export const GITHUB = 'https://github.com/profoundry-us/highball';
@@ -34,6 +33,17 @@ export function Mark({ className = 'size-6' }) {
   );
 }
 
+// Font Awesome's npm wordmark, but with the viewBox cropped to the glyph itself
+// (the original leaves 37% of its height empty above and below), so at h-5 it
+// stands as tall as the GitHub mark beside it instead of reading as a sliver.
+function NpmMark({ className = '' }) {
+  return (
+    <svg className={className} viewBox="0 160 576 192" fill="currentColor" aria-hidden="true">
+      <path d="M288 288h-32v-64h32v64zm288-128v192H288v32H160v-32H0V160h576zm-416 32H32v128h64v-96h32v96h32V192zm160 0H192v160h64v-32h64V192zm224 0H352v128h64v-96h32v96h32v-96h32v96h32V192z" />
+    </svg>
+  );
+}
+
 export default function Navbar() {
   return (
     <header className="relative z-10">
@@ -53,8 +63,8 @@ export default function Navbar() {
           <a href={GITHUB} {...EXT} className="btn btn-ghost btn-sm btn-square" aria-label="Highball on GitHub">
             <FaGithub className="size-5" aria-hidden="true" />
           </a>
-          <a href={NPM} {...EXT} className="btn btn-ghost btn-sm btn-square" aria-label="Highball on npm">
-            <SiNpm className="size-5" aria-hidden="true" />
+          <a href={NPM} {...EXT} className="btn btn-ghost btn-sm px-2" aria-label="Highball on npm">
+            <NpmMark className="h-5 w-auto" />
           </a>
         </div>
       </nav>
