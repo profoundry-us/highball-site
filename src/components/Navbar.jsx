@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { FaGithub, FaNpm } from 'react-icons/fa6';
+import { FaGithub } from 'react-icons/fa6';
+import { SiNpm } from 'react-icons/si';
 import ThemeToggle from './ThemeToggle.jsx';
 
 export const GITHUB = 'https://github.com/profoundry-us/highball';
@@ -50,10 +51,10 @@ export default function Navbar() {
         <div className="flex items-center gap-1">
           <ThemeToggle />
           <a href={GITHUB} {...EXT} className="btn btn-ghost btn-sm btn-square" aria-label="Highball on GitHub">
-            <FaGithub className="size-[18px]" aria-hidden="true" />
+            <FaGithub className="size-5" aria-hidden="true" />
           </a>
           <a href={NPM} {...EXT} className="btn btn-ghost btn-sm btn-square" aria-label="Highball on npm">
-            <FaNpm className="size-[22px]" aria-hidden="true" />
+            <SiNpm className="size-5" aria-hidden="true" />
           </a>
         </div>
       </nav>
