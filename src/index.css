@@ -301,3 +301,46 @@ html {
   --neon-glow-1: 0.8;
   --neon-glow-2: 0.35;
 }
+
+/*
+ * Scroll-driven motion (CSS scroll timelines; browsers without them, and
+ * anyone who asked for less motion, get the resting state):
+ *  - .reveal-parallax drifts upward a little faster than the page (the hero's
+ *    blocking terminal);
+ *  - .reveal-up fades and rises as it enters the viewport (feature tiles);
+ *  - the neon rules stretch from a third of their width to full as they come
+ *    into view.
+ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-parallax {
+      animation: parallax-drift linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+      will-change: transform;
+    }
+    .reveal-up {
+      animation: rise-in ease-out both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+    .neon-rule {
+      transform-origin: center;
+      animation: widen ease-out both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 28%;
+    }
+  }
+}
+@keyframes parallax-drift {
+  from { transform: translateY(56px); }
+  to { transform: translateY(-56px); }
+}
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes widen {
+  from { transform: scaleX(0.33); opacity: 0.4; }
+  to { transform: scaleX(1); opacity: 1; }
+}

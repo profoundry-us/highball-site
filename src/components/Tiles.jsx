@@ -20,7 +20,7 @@ function Frag({ lines }) {
 function Tile({ span = 2, title, children, lines }) {
   const cols = span === 3 ? 'md:col-span-3' : 'md:col-span-2';
   return (
-    <div className={`${cols} rounded-box border line bg-base-200 p-[18px] flex flex-col gap-3.5 min-h-[250px]`}>
+    <div className={`${cols} reveal-up rounded-box border line bg-base-200 p-[18px] flex flex-col gap-3.5 min-h-[250px]`}>
       <Frag lines={lines} />
       <h3 className="text-[17px] font-bold">{title}</h3>
       <p className="text-sm leading-relaxed text-base-content/70">{children}</p>
@@ -36,7 +36,7 @@ const Mono = ({ children }) => <span className="font-mono">{children}</span>;
  */
 export default function Tiles() {
   return (
-    <section id="features" data-theme="highball-dark" className="notched relative overflow-hidden bg-neutral text-base-content py-28 md:py-32 mt-6">
+    <section id="features" data-theme="highball-dark" className="notched relative overflow-clip bg-neutral text-base-content py-28 md:py-32 mt-6">
       <div
         aria-hidden="true"
         className="absolute left-1/2 -top-[220px] w-[900px] h-[520px] -translate-x-1/2 rounded-full pointer-events-none bg-[radial-gradient(closest-side,rgba(143,133,255,.22),rgba(143,133,255,0))]"

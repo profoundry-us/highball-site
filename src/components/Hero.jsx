@@ -11,7 +11,7 @@ import PromptLine from './PromptLine.jsx';
  */
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#111118]">
+    <section className="relative overflow-clip bg-[#111118]">
       {/* "Misty mountains shrouded in blue twilight fog" by 志远 杨 on Unsplash */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
         <img
@@ -49,7 +49,7 @@ export default function Hero() {
               <div className="flex flex-col gap-4 lg:items-end">
                 <PromptLine elevated />
                 {/* Caption for the prompt block: same width as the box, left-aligned under it. */}
-                <p className="w-full max-w-[560px] -mt-2 text-base leading-relaxed text-base-content/90">
+                <p className="w-full max-w-[560px] -mt-2 ml-1.5 text-base leading-relaxed text-base-content/90">
                   The prompt points your agent at a{' '}
                   <a href={ONBOARDING} {...EXT} className="link font-medium text-white">
                     step-by-step guide
@@ -57,7 +57,7 @@ export default function Hero() {
                   written for it.
                 </p>
                 <div className="flex flex-wrap items-center gap-3">
-                  <a href="/#by-hand" className="btn btn-outline">Set it up manually</a>
+                  <a href="/#by-hand" className="btn btn-outline backdrop-blur-md bg-black/25">Set it up manually</a>
                   <a href="/#getting-started" className="btn btn-primary">Get started</a>
                 </div>
               </div>
@@ -81,7 +81,7 @@ export default function Hero() {
             <Term
               themed
               bar="Stop hook · highball run"
-              className="mt-4 md:mt-0 md:absolute md:right-0 md:bottom-10 md:w-[520px] shadow-[0_30px_80px_-20px_rgba(0,0,0,.7)]"
+              className="reveal-parallax mt-4 md:mt-0 md:absolute md:right-0 md:bottom-10 md:w-[520px] shadow-[0_30px_80px_-20px_rgba(0,0,0,.7)]"
               lines={[
                 <><Dim>$</Dim> npx @profoundry-us/highball run</>,
                 <>→ Lint &amp; formatting ... <Ok>passed</Ok> <Dim>(2.1s)</Dim></>,
