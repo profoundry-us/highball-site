@@ -6,7 +6,7 @@ function Shot({ kind, stat, title, src, width, height, alt, note }) {
   return (
     <div className="flex flex-col gap-3.5">
       <div className="flex items-center gap-2.5">
-        <span className="badge badge-soft badge-neutral font-mono text-xs">{kind}</span>
+        <span className="badge badge-ghost font-mono text-xs">{kind}</span>
         <span className="font-mono text-xs text-base-content/70">{stat}</span>
       </div>
       <Window title={title} className="shadow-[0_30px_70px_-30px_rgba(0,0,0,.6)]">
