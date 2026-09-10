@@ -346,3 +346,13 @@ html {
   from { transform: scaleX(0.33); opacity: 0.4; }
   to { transform: scaleX(1); opacity: 1; }
 }
+
+/* A soft primary button painted with the page-level tokens, for use inside the
+   hero's dark island: it follows the light/dark toggle like the prompt box. */
+.btn-soft-page {
+  --btn-color: color-mix(in oklab, var(--page-primary) 10%, var(--page-bg));
+  --btn-fg: var(--page-primary);
+  --btn-border: color-mix(in oklab, var(--page-primary) 16%, var(--page-bg));
+  --btn-shadow: 0 0 #0000;
+  --btn-noise: none;
+}

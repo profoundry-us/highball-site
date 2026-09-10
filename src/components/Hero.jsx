@@ -57,7 +57,7 @@ export default function Hero() {
                   written for it.
                 </p>
                 <div className="flex flex-wrap items-center gap-3">
-                  <a href="/#by-hand" className="btn btn-soft btn-primary">Set it up manually</a>
+                  <a href="/#by-hand" className="btn btn-soft-page">Set it up manually</a>
                   <a href="/#getting-started" className="btn btn-primary">Get started</a>
                 </div>
               </div>
