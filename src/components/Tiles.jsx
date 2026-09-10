@@ -36,7 +36,7 @@ const Mono = ({ children }) => <span className="font-mono">{children}</span>;
  */
 export default function Tiles() {
   return (
-    <section data-theme="highball-dark" className="notched relative overflow-hidden bg-neutral text-base-content py-28 md:py-32 mt-6">
+    <section id="features" data-theme="highball-dark" className="notched relative overflow-hidden bg-neutral text-base-content py-28 md:py-32 mt-6">
       <div
         aria-hidden="true"
         className="absolute left-1/2 -top-[220px] w-[900px] h-[520px] -translate-x-1/2 rounded-full pointer-events-none bg-[radial-gradient(closest-side,rgba(143,133,255,.22),rgba(143,133,255,0))]"

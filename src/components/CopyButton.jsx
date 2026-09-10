@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 // A quiet "copy" affordance for a command. Sits in a Term bar or beside a
 // command line; the text stays selectable if the clipboard is blocked.
-export default function CopyButton({ text, label, className = 'text-neutral-content/60 hover:text-neutral-content' }) {
+export default function CopyButton({ text, label, className = 'opacity-60 hover:opacity-100' }) {
   const [copied, setCopied] = useState(false);
   async function copy() {
     try {

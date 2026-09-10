@@ -230,13 +230,13 @@ body {
    with two blurred copies behind it for the glow — tight and bright, then
    wide and faint. */
 .neon-rule {
-  --neon: var(--color-primary);
+  --neon: var(--neon-primary);
   position: relative;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--neon) 25%, var(--neon) 75%, transparent);
 }
 .neon-rule-secondary {
-  --neon: var(--color-secondary);
+  --neon: var(--neon-secondary);
 }
 .neon-rule::before,
 .neon-rule::after {
@@ -251,11 +251,53 @@ body {
   top: -3px;
   bottom: -3px;
   filter: blur(6px);
-  opacity: 0.8;
+  opacity: var(--neon-glow-1);
 }
 .neon-rule::after {
   top: -14px;
   bottom: -14px;
   filter: blur(22px);
-  opacity: 0.35;
+  opacity: var(--neon-glow-2);
+}
+
+/*
+ * Page-level tokens: resolved on <html> from whichever theme the page is in,
+ * then inherited as plain colours — so an element inside a dark island can
+ * still paint itself in the page's theme (the hero prompt's input row).
+ */
+html {
+  --page-bg: var(--color-base-100);
+  --page-fg: var(--color-base-content);
+  --page-primary: var(--color-primary);
+  --page-line: color-mix(in oklab, var(--color-base-content) 12%, transparent);
+}
+
+/* The hero's widget capture: one file per theme, chosen here so only one loads. */
+.shot-widget { background-image: url('/img/widget-webtree-light.webp'); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='highball-light']) .shot-widget { background-image: url('/img/widget-webtree.webp'); }
+}
+:root[data-theme='highball-dark'] .shot-widget { background-image: url('/img/widget-webtree.webp'); }
+
+/* Neon rules per theme: on the light page a darker purple and near-black
+   instead of the glowing primary/amber, with a much quieter halo. */
+:root {
+  --neon-primary: #3b2bd6;
+  --neon-secondary: #1a1a2e;
+  --neon-glow-1: 0.4;
+  --neon-glow-2: 0.15;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='highball-light']) {
+    --neon-primary: var(--color-primary);
+    --neon-secondary: var(--color-secondary);
+    --neon-glow-1: 0.8;
+    --neon-glow-2: 0.35;
+  }
+}
+:root[data-theme='highball-dark'] {
+  --neon-primary: var(--color-primary);
+  --neon-secondary: var(--color-secondary);
+  --neon-glow-1: 0.8;
+  --neon-glow-2: 0.35;
 }

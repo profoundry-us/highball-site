@@ -1,44 +1,39 @@
 import CopyButton from './CopyButton.jsx';
 
-export const PROMPT = 'Run npx @profoundry-us/highball onboard and follow the instructions.';
+const CMD = 'npx @profoundry-us/highball onboard';
+export const PROMPT = `Run \`${CMD}\` and follow the instructions.`;
 
 /*
  * The prompt to hand your agent, drawn as a coding agent's input line —
  * chevron, the sentence, a live caret — rather than a terminal window.
- * Only the input row is forced onto the dark token set (like the
- * terminals); the label row above it reads in whatever theme the page is
- * in. `elevated` adds the hero's deep shadow, which is too heavy on a light
- * page background.
+ * The input row is painted with the page-level tokens (--page-*, set on
+ * <html> in index.css) so it follows the light/dark toggle even inside the
+ * hero's dark island; the label row above it takes whatever surrounds it.
+ * `elevated` adds the hero's deep shadow and the aura sweep. Copy takes the
+ * whole sentence, backticks included: it is a prompt, not a command.
  */
 export default function PromptLine({ id, elevated = false, className = '' }) {
   return (
     <div id={id} className={`w-full max-w-[560px] scroll-mt-24 flex flex-col gap-2 ${className}`}>
-      <div className="flex items-center justify-between px-1 font-mono text-[11px] text-base-content/70">
+      <div className="flex items-center justify-between px-1 font-mono text-[11px] opacity-70">
         <span>claude code · cursor · codex</span>
-        <CopyButton
-          text={PROMPT}
-          label="Copy the prompt for your agent"
-          className="text-base-content/70 hover:text-base-content"
-        />
+        <CopyButton text={PROMPT} label="Copy the prompt for your agent" className="hover:opacity-100" />
       </div>
-      {/* In the hero the row wears DaisyUI's aura: a thin conic sweep of primary
-          circling the border with a soft glow behind it (slows under reduced motion). */}
       <div
         className={
           elevated
-            ? 'aura aura-sm block w-full text-primary duration-[9s] [--aura-radius:var(--radius-field)]'
+            ? 'aura aura-sm block w-full text-(--page-primary) duration-[9s] [--aura-radius:var(--radius-field)]'
             : undefined
         }
       >
         <div
-          data-theme="highball-dark"
-          className={`flex items-baseline gap-3 px-4 py-3.5 rounded-field border line bg-neutral font-mono text-sm leading-relaxed ${
-            elevated ? 'shadow-[0_30px_80px_-20px_rgba(0,0,0,.8)]' : 'shadow-[0_16px_40px_-20px_rgba(0,0,0,.5)]'
+          className={`flex items-baseline gap-3 px-4 py-3.5 rounded-field border border-(--page-line) bg-(--page-bg) text-(--page-fg) font-mono text-sm leading-relaxed ${
+            elevated ? 'shadow-[0_30px_80px_-20px_rgba(0,0,0,.6)]' : 'shadow-[0_16px_40px_-20px_rgba(0,0,0,.4)]'
           }`}
         >
-          <span className="text-primary select-none" aria-hidden="true">&gt;</span>
-          <p className="m-0 text-neutral-content">
-            {PROMPT}
+          <span className="text-(--page-primary) select-none" aria-hidden="true">&gt;</span>
+          <p className="m-0">
+            Run <span className="text-(--page-primary)">`{CMD}`</span> and follow the instructions.
             <span className="caret" aria-hidden="true" />
           </p>
         </div>

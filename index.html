@@ -12,6 +12,14 @@
           if (t === 'dark' || t === 'light') {
             document.documentElement.setAttribute('data-theme', 'highball-' + t);
           }
+          // Preload the hero widget capture for the theme that will actually paint.
+          var dark = t === 'dark' || (t !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          var l = document.createElement('link');
+          l.rel = 'preload';
+          l.as = 'image';
+          l.href = '/img/widget-webtree' + (dark ? '' : '-light') + '.webp';
+          l.fetchPriority = 'high';
+          document.head.appendChild(l);
         } catch (e) {}
       })();
     </script>

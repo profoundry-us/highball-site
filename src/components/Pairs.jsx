@@ -23,7 +23,7 @@ function RunRow({ status, when, kind, branch, time, tally }) {
  */
 export default function Pairs() {
   return (
-    <Section
+    <Section id="telemetry"
       eyebrow="Two halves"
       title="Enforcement, then witness."
       lead="Enforcement runs on your machine and can stop the agent. Telemetry is optional and best-effort, sent only to a PostHog project you own."

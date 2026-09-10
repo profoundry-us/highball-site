@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FaGithub, FaNpm } from 'react-icons/fa6';
 import ThemeToggle from './ThemeToggle.jsx';
 
 export const GITHUB = 'https://github.com/profoundry-us/highball';
@@ -41,14 +42,19 @@ export default function Navbar() {
           <span className="heading text-xl font-bold tracking-tight">Highball</span>
         </Link>
         <div className="hidden md:flex items-center gap-7 text-sm font-medium text-base-content/70">
-          <a href="#runs" className="hover:text-base-content">How it works</a>
-          <a href={ONBOARDING} {...EXT} className="hover:text-base-content">Onboarding</a>
-          <a href={GITHUB} {...EXT} className="hover:text-base-content">GitHub</a>
-          <a href={NPM} {...EXT} className="hover:text-base-content">npm</a>
+          <a href="/#runs" className="hover:text-base-content">How it works</a>
+          <a href="/#features" className="hover:text-base-content">Features</a>
+          <a href="/#telemetry" className="hover:text-base-content">Telemetry</a>
+          <a href="/#getting-started" className="hover:text-base-content">Getting started</a>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <ThemeToggle />
-          <a href="/#getting-started" className="btn btn-sm btn-primary">Get started</a>
+          <a href={GITHUB} {...EXT} className="btn btn-ghost btn-sm btn-square" aria-label="Highball on GitHub">
+            <FaGithub className="size-[18px]" aria-hidden="true" />
+          </a>
+          <a href={NPM} {...EXT} className="btn btn-ghost btn-sm btn-square" aria-label="Highball on npm">
+            <FaNpm className="size-[22px]" aria-hidden="true" />
+          </a>
         </div>
       </nav>
     </header>
