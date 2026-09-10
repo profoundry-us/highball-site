@@ -1,0 +1,29 @@
+# Deploys the site to Fly on every push to main, and on demand. Pushing to
+# main is deploying: review before you push. A package release needs no
+# deploy — the navbar reads the current version from the npm registry.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# One deploy at a time; a newer push supersedes one still queued.
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+
+      # The build runs on Fly's builders (--remote-only), where the
+      # Dockerfile fetches the current package version from npm.
+      - name: Deploy
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: flyctl deploy --remote-only --ha=false
