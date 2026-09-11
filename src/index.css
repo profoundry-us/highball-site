@@ -226,6 +226,55 @@ body {
   .caret { animation: none; }
 }
 
+/*
+ * The hero prompt's sweep: a conic highlight travelling round the box with a
+ * soft halo — DaisyUI's `aura` look, rebuilt so it costs nothing to run.
+ * DaisyUI animates the gradient's angle, which repaints the box and its two
+ * blurred copies on the main thread every frame, forever; Chrome dropped
+ * scroll frames on Retina screens because of it. Here the gradient is drawn
+ * once on an oversized square and the square is rotated with `transform`,
+ * which the compositor does on the GPU with no repaint. Each layer clips the
+ * square to the box; the halo layers blur that clipped result so the glow
+ * still spills outward the way DaisyUI's does.
+ */
+.sweep {
+  position: relative;
+  padding: var(--sweep-padding, 1px);
+  border-radius: calc(var(--sweep-padding, 1px) + var(--sweep-radius, var(--radius-field)));
+}
+.sweep-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: clip;
+  pointer-events: none;
+}
+.sweep-layer::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* a square wider than the box is long, so no corner shows through as it turns */
+  width: 200%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  background-image: conic-gradient(from 0deg, transparent 225deg, currentColor);
+  animation: sweep-spin var(--sweep-duration, 6s) linear infinite;
+  will-change: transform;
+}
+.sweep-halo { opacity: 0.3; filter: blur(1rem); }
+.sweep-halo-tight { opacity: 0.7; filter: blur(0.25rem); }
+.sweep > .sweep-content {
+  position: relative;
+  z-index: 1;
+}
+@keyframes sweep-spin {
+  to { transform: rotate(1turn); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sweep-layer::before { animation-duration: calc(var(--sweep-duration, 6s) * 4); }
+}
+
 /* Neon divider: a one-pixel primary hairline fading to nothing at both ends,
    with two blurred copies behind it for the glow — tight and bright, then
    wide and faint. */

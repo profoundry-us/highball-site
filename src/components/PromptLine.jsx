@@ -9,7 +9,7 @@ export const PROMPT = `Run \`${CMD}\` and follow the instructions.`;
  * The input row is painted with the page-level tokens (--page-*, set on
  * <html> in index.css) so it follows the light/dark toggle even inside the
  * hero's dark island; the label row above it takes whatever surrounds it.
- * `elevated` adds the hero's deep shadow and the aura sweep. Copy takes the
+ * `elevated` adds the hero's deep shadow and the sweep (see .sweep in index.css). Copy takes the
  * whole sentence, backticks included: it is a prompt, not a command.
  */
 export default function PromptLine({ id, elevated = false, className = '' }) {
@@ -19,15 +19,16 @@ export default function PromptLine({ id, elevated = false, className = '' }) {
         <span>claude code · cursor · codex</span>
         <CopyButton text={PROMPT} label="Copy the prompt for your agent" className="hover:opacity-100" />
       </div>
-      <div
-        className={
-          elevated
-            ? 'aura aura-sm block w-full text-(--page-primary) duration-[9s] [--aura-radius:var(--radius-field)]'
-            : undefined
-        }
-      >
+      <div className={elevated ? 'sweep block w-full text-(--page-primary) [--sweep-duration:9s]' : undefined}>
+        {elevated && (
+          <>
+            <span className="sweep-layer sweep-halo" aria-hidden="true" />
+            <span className="sweep-layer sweep-halo-tight" aria-hidden="true" />
+            <span className="sweep-layer" aria-hidden="true" />
+          </>
+        )}
         <div
-          className={`flex items-baseline gap-3 px-4 py-3.5 rounded-field border border-(--page-line) bg-(--page-bg) text-(--page-fg) font-mono text-sm leading-relaxed ${
+          className={`sweep-content flex items-baseline gap-3 px-4 py-3.5 rounded-field border border-(--page-line) bg-(--page-bg) text-(--page-fg) font-mono text-sm leading-relaxed ${
             elevated ? 'shadow-[0_30px_80px_-20px_rgba(0,0,0,.6)]' : 'shadow-[0_16px_40px_-20px_rgba(0,0,0,.4)]'
           }`}
         >
