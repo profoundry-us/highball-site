@@ -57,8 +57,10 @@ export default function Tiles() {
               <Dim>// .claude/settings.json</Dim>,
               <><K>"PostToolUse"</K>: [{'{'}</>,
               <>  <K>"matcher"</K>: <S>"Write|Edit|Bash"</S>,</>,
-              <>  <K>"command"</K>: <S>"npx @profoundry-us/highball</S></>,
-              <>            <S>run --fast --if-changed"</S></>,
+              <>  <K>"command"</K>: <S>"node node_modules/</S></>,
+              <>    <S>@profoundry-us/highball/</S></>,
+              <>    <S>bin/highball.js run --fast</S></>,
+              <>    <S>--if-changed"</S></>,
               '}]',
             ]}
           >
@@ -70,7 +72,10 @@ export default function Tiles() {
             title="Full checks at turn end"
             lines={[
               <><K>"Stop"</K>: [{'{'}</>,
-              <>  <K>"command"</K>: <S>"npx @profoundry-us/highball run"</S>,</>,
+              <>  <K>"command"</K>: <S>"node node_modules/</S></>,
+              <>    <S>@profoundry-us/highball/</S></>,
+              <>    <S>bin/highball.js run</S></>,
+              <>    <S>--if-changed"</S>,</>,
               <>  <K>"timeout"</K>: <N>900</N></>,
               '}]',
               '',
